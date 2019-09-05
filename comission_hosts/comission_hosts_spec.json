@@ -1,0 +1,15 @@
+[ {
+  "fqdn" : "esfo01m01esx01.sfo01.rainpole.local",
+  "username" : "root",
+  "password" : "VMwareInfra@1",
+  "storageType" : "VSAN",
+  "networkPoolId" : "58d74167-ee80-4eb8-90d9-cdfb3c1cd9f3",
+  "networkPoolName" : "engineering-networkpool"
+}, {
+  "fqdn" : "esfo01m01esx02.sfo01.rainpole.local",
+  "username" : "root",
+  "password" : "VMwareInfra@1",
+  "storageType" : "VSAN",
+  "networkPoolId" : "1ff2838a-1983-4747-a94d-d30b2d13a973",
+  "networkPoolName" : "finance-networkpool"
+} ]
