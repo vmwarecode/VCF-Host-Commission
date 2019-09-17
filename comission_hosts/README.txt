@@ -42,7 +42,12 @@ The hosts, if intended to be used for vSAN domain must be associated with vSAN e
 
 The hosts, if intended to be used for NFS domain must be associated with NFS enabled network pool.
 
-Update specs in Comsiision_hosts_spec.json
 
 Usage:
     python comission_hosts.py <hostname> <username> <password>
+
+comsiision_hosts_spec.json is the sample spec file
+
+
+Sample specification file "comsiision_hosts_spec.json" will be used for comission host operation. So fill the required details and validate before executing the script.
+For more information on the provided sample file, please refer to API reference documentation.
