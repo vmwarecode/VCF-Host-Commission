@@ -1,4 +1,28 @@
-Comission hosts:
+INTRODUCTION:
+------------
+
+This module contains script files to commission hosts.
+
+
+REQUIREMENTS:
+------------
+
+This module requires the following modules:
+
+ * Python 2.7.x
+   Libraries
+  * requests
+  * sys
+  * json
+  * time
+
+ * The scripts must be run outside sddc-manager environment.
+
+ * DNS resolution must be done for sddc-manager.
+
+
+PREREQUSITES:
+--------------
 
 The following data is required
 
@@ -43,11 +67,12 @@ The hosts, if intended to be used for vSAN domain must be associated with vSAN e
 The hosts, if intended to be used for NFS domain must be associated with NFS enabled network pool.
 
 
-Usage:
-    python comission_hosts.py <hostname> <username> <password>
-
-comsiision_hosts_spec.json is the sample spec file
-
-
-Sample specification file "comsiision_hosts_spec.json" will be used for comission host operation. So fill the required details and validate before executing the script.
+USAGE:
+-----
+Sample specification file "commission_hosts_spec.json" will be used for commission host operation. So fill the required details and validate before executing the script.
 For more information on the provided sample file, please refer to API reference documentation.
+
+Usage:	python commission_hosts.py <hostname> <username> <password>
+
+commission_hosts_spec.json is the sample spec file
+
