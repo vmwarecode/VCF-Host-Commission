@@ -10,8 +10,8 @@ def get_request(url,username,password):
     response = requests.get(url, headers=headers,auth=(username, password))
     data = json.loads(response.text)
     if(response.status_code != 200):
-        print json.dumps(data,indent=4, sort_keys=True)
-        print "Error reaching the server."
+        print (json.dumps(data,indent=4, sort_keys=True))
+        print ('Error reaching the server.')
         exit(1)
     return data
 
@@ -20,7 +20,7 @@ def post_request(data,url,username,password):
     response = requests.post(url, headers=headers, json=data, auth=(username, password))
     data = json.loads(response.text)
     if(response.status_code != 202):
-        print "Error reaching the server."
+        print ('Error reaching the server.')
         exit(1)
     return data
 
@@ -44,10 +44,10 @@ def poll_on_id(url,username,password,task):
         return status
     if(status == completed):
         result = get_request(url,username,password)['resultStatus']
-        print 'Operations status:'+ result
+        print ('Operations status:' + result)
         return result
     else:
-        print 'Operation failed'
+        print ('Operation failed')
         exit(0)
 
 def commission_hosts(hostname,username,password):
@@ -55,26 +55,26 @@ def commission_hosts(hostname,username,password):
     url =  hostname+'/v1/hosts/validations/commissions'
     response = post_request(data,url,username,password)
     request_id = response['id']
-    print "Validating the input...."
+    print ('Validating the input....')
     url = hostname+'/v1/hosts/validations/'+request_id
     result = poll_on_id(url,username,password,False)
     if(result == 'SUCCEEDED'):
-        print 'Validation succeeded.'
+        print ('Validation succeeded.')
         url = hostname + '/v1/hosts'
         response = post_request(data,url,username,password)
-        print 'Commissioning hosts...'
+        print ('Commissioning hosts...')
         task_id = response['id']
         url = hostname+'/v1/tasks/'+task_id
         result = poll_on_id(url,username,password,True)
         if(result != 'Failed'):
-            print 'Successfully commissioned hosts.'
+            print ('Successfully commissioned hosts.')
         else:
-            print 'Commissioning of hosts failed.'
-            print json.dumps(response,indent=4, sort_keys=True)
+            print ('Commissioning of hosts failed.')
+            print (json.dumps(response,indent=4, sort_keys=True))
     else:
-        print 'Validation failed.'
-        print json.dumps(response,indent=4, sort_keys=True)
-        print result
+        print ('Validation failed.')
+        print (json.dumps(response,indent=4, sort_keys=True))
+        print (result)
 
 #commission_hosts_spec.json is the preconfigured spec input file.
 def read_input():
@@ -86,7 +86,7 @@ def get_help():
     help_description = '''\n\t\t----Commission hosts----
     Usage:
     python commission_hosts.py <hostname> <username> <password>\n Refer to documentation for more detais\n'''
-    print help_description
+    print (help_description)
 
 
 def action_performer():
@@ -96,7 +96,7 @@ def action_performer():
         return
     hostname = 'https://'+arguments[1]
     username = arguments[2]
-    passwsord = arguments[3]
+    password = arguments[3]
     commission_hosts(hostname,username,password)
     return
 
